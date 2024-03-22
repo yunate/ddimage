@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="ddimage.cpp" />
+    <ClCompile Include="ddimage_log_.cpp" />
+    <ClCompile Include="ddimage_convert_.cpp" />
+    <ClCompile Include="gif\ddgif_impl_.cpp">
+      <Filter>gif</Filter>
+    </ClCompile>
+    <ClCompile Include="gif\ddgif_string_table_.cpp">
+      <Filter>gif</Filter>
+    </ClCompile>
+    <ClCompile Include="gif\ddgif_info_.cpp">
+      <Filter>gif</Filter>
+    </ClCompile>
+    <ClCompile Include="quantize\ddquantize_.cpp">
+      <Filter>quantize</Filter>
+    </ClCompile>
+    <ClCompile Include="quantize\ddquantizer_wu_.cpp">
+      <Filter>quantize</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ddimage.h" />
+    <ClInclude Include="ddimage_log_.h" />
+    <ClInclude Include="ddimage_convert_.h" />
+    <ClInclude Include="gif\ddgif_impl_.h">
+      <Filter>gif</Filter>
+    </ClInclude>
+    <ClInclude Include="gif\ddgif_string_table_.h">
+      <Filter>gif</Filter>
+    </ClInclude>
+    <ClInclude Include="gif\ddgif_info_.h">
+      <Filter>gif</Filter>
+    </ClInclude>
+    <ClInclude Include="quantize\ddquantize_.h">
+      <Filter>quantize</Filter>
+    </ClInclude>
+    <ClInclude Include="quantize\ddquantizer_wu_.h">
+      <Filter>quantize</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="gif">
+      <UniqueIdentifier>{a86e7ef3-0c7a-405e-b8d7-7a73aefa4065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="quantize">
+      <UniqueIdentifier>{08c5734e-8559-487f-b5c1-1c621a3ce31f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
