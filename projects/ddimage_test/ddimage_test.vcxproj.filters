@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="test_case_ddimage.cpp" />
+    <ClCompile Include="test_case_ddgif.cpp" />
+    <ClCompile Include="test_case_ddgif_render_gif.cpp" />
+    <ClCompile Include="test_case_emoj_pick_up.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="3rd\nlohmann_json.hpp">
+      <Filter>3rd</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="3rd">
+      <UniqueIdentifier>{728f7b5d-7898-4e3f-bd47-c4e117847e59}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+#dir
+.vs/
+/.git/
+bin/
+test_folder/
+
+#file
+*.db
+*.opendb
+*.opensdf
+*.sdf
+*.suo
+*.tmp
+*.vcxproj.user
+*.aps
