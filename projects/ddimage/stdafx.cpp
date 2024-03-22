@@ -1,0 +1,1 @@
+#include "ddimage/stdafx.h"

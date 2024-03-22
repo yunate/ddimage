@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_Mdd|Win32">
+      <Configuration>Debug_Mdd</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Md|Win32">
+      <Configuration>Release_Md</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_Mdd|x64">
+      <Configuration>Debug_Mdd</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_Md|x64">
+      <Configuration>Release_Md</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <!-- 源码文件 -->
+  <ItemGroup>
+    <ClCompile Include="ddimage.cpp" />
+    <ClCompile Include="ddimage_convert_.cpp" />
+    <ClCompile Include="ddimage_log_.cpp" />
+    <ClCompile Include="gif\ddgif_impl_.cpp" />
+    <ClCompile Include="gif\ddgif_info_.cpp" />
+    <ClCompile Include="gif\ddgif_string_table_.cpp" />
+    <ClCompile Include="quantize\ddquantize_.cpp" />
+    <ClCompile Include="quantize\ddquantizer_wu_.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ddimage.h" />
+    <ClInclude Include="ddimage_convert_.h" />
+    <ClInclude Include="ddimage_log_.h" />
+    <ClInclude Include="gif\ddgif_impl_.h" />
+    <ClInclude Include="gif\ddgif_info_.h" />
+    <ClInclude Include="gif\ddgif_string_table_.h" />
+    <ClInclude Include="quantize\ddquantize_.h" />
+    <ClInclude Include="quantize\ddquantizer_wu_.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <!-- 项目定义 -->
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4F2FFB4A-C1B5-4C46-B347-A0BF48EFBB51}</ProjectGuid>
+    <RootNamespace>ddimage</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <!-- 字符集 & 项目类型 -->
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</UseDebugLibraries>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Release'">false</UseDebugLibraries>
+    <WholeProgramOptimization Condition="'$(Configuration)'=='Release'">true</WholeProgramOptimization>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Debug_Mdd'">true</UseDebugLibraries>
+    <UseDebugLibraries Condition="'$(Configuration)'=='Release_Md'">false</UseDebugLibraries>
+    <WholeProgramOptimization Condition="'$(Configuration)'=='Release_Md'">true</WholeProgramOptimization>
+  </PropertyGroup>
+  <!-- C++ 目录 -->
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(SolutionDir)user.props" />
+  <PropertyGroup>
+    <OutDir>$(USER_BuildOutDir)</OutDir>
+    <IntDir>$(USER_BuildTmpDir)$(ProjectName)\</IntDir>
+    <IncludePath>$(USER_IncludePath);$(IncludePath)</IncludePath>
+    <LibraryPath>$(USER_LibraryPath);$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>true</VcpkgEnabled>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+    <VcpkgInstalledDir Condition="'$(Configuration)'=='Debug_Mdd'">$(USER_VcpkgBaseDir)\$(PlatForm)_md</VcpkgInstalledDir>
+    <VcpkgInstalledDir Condition="'$(Configuration)'=='Release_Md'">$(USER_VcpkgBaseDir)\$(PlatForm)_md</VcpkgInstalledDir>
+    <VcpkgUseMD Condition="'$(Configuration)'=='Debug_Mdd'">true</VcpkgUseMD>
+    <VcpkgUseMD Condition="'$(Configuration)'=='Release_Md'">true</VcpkgUseMD>
+    <VcpkgInstalledDir Condition="'$(Configuration)'=='Debug'">$(USER_VcpkgBaseDir)\$(PlatForm)_mt</VcpkgInstalledDir>
+    <VcpkgInstalledDir Condition="'$(Configuration)'=='Release'">$(USER_VcpkgBaseDir)\$(PlatForm)_mt</VcpkgInstalledDir>
+    <VcpkgUseMD Condition="'$(Configuration)'=='Debug'">false</VcpkgUseMD>
+    <VcpkgUseMD Condition="'$(Configuration)'=='Release'">false</VcpkgUseMD>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(USER_AdditionalIncludePath)</AdditionalIncludeDirectories>
+      <!-- stdafx -->
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderOutputFile>$(USER_BuildTmpDir)$(ProjectName)\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <PrecompiledHeaderFile>ddimage/stdafx.h</PrecompiledHeaderFile>
+      <!-- MT/MD  -->
+      <RuntimeLibrary Condition="'$(Configuration)'=='Debug'">MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)'=='Release'">MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)'=='Debug_Mdd'">MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary Condition="'$(Configuration)'=='Release_Md'">MultiThreadedDLL</RuntimeLibrary>
+      <!-- 代码优化 -->
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>false</ConformanceMode>
+      <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization>
+      <Optimization Condition="'$(Configuration)'=='Debug_Mdd'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)'=='Release_Md'">MaxSpeed</Optimization>
+      <FunctionLevelLinking Condition="'$(Configuration)'=='Release'">true</FunctionLevelLinking>
+      <FunctionLevelLinking Condition="'$(Configuration)'=='Release_Md'">true</FunctionLevelLinking>
+      <IntrinsicFunctions Condition="'$(Configuration)'=='Release'">true</IntrinsicFunctions>
+      <IntrinsicFunctions Condition="'$(Configuration)'=='Release_Md'">true</IntrinsicFunctions>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <DisableSpecificWarnings>4828</DisableSpecificWarnings>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug_Mdd|Win32'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release_Md|Win32'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug_Mdd|x64'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release_Md|x64'">_UNICODE;UNICODE;DDIMAGE_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding Condition="'$(Configuration)'=='Release'">true</EnableCOMDATFolding>
+      <OptimizeReferences Condition="'$(Configuration)'=='Release'">true</OptimizeReferences>
+      <EnableCOMDATFolding Condition="'$(Configuration)'=='Release_Md'">true</EnableCOMDATFolding>
+      <OptimizeReferences Condition="'$(Configuration)'=='Release_Md'">true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
